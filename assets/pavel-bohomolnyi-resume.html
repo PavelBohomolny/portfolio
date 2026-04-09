@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pavel Bohomolnyi Resume</title>
+  <style>
+    :root {
+      --bg: #edf4fb;
+      --paper: #ffffff;
+      --ink: #12202d;
+      --muted: #5f7183;
+      --line: #dbe6f0;
+      --accent: #1593d6;
+      --accent-soft: #eef7fd;
+      --display: "Avenir Next", "Segoe UI", sans-serif;
+      --body: "Inter", "Helvetica Neue", sans-serif;
+      --shadow: 0 24px 70px rgba(13, 31, 48, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 32px 18px;
+      color: var(--ink);
+      font-family: var(--body);
+      background:
+        radial-gradient(circle at top left, rgba(21, 147, 214, 0.08), transparent 22%),
+        linear-gradient(180deg, #edf4fb 0%, #f7fbfe 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .resume {
+      width: min(1080px, 100%);
+      margin: 0 auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      padding: 16px 28px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(21, 147, 214, 0.03);
+    }
+
+    .topbar a {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .layout {
+      display: grid;
+      grid-template-columns: 320px minmax(0, 1fr);
+    }
+
+    .sidebar {
+      padding: 34px 28px 36px;
+      background: linear-gradient(180deg, #f8fbfe 0%, #f4f8fc 100%);
+      border-right: 1px solid var(--line);
+    }
+
+    .main {
+      padding: 34px 34px 38px;
+    }
+
+    .name {
+      margin: 0;
+      font-family: var(--display);
+      font-size: 2.6rem;
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+    }
+
+    .role {
+      margin: 12px 0 0;
+      color: var(--accent);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .intro {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.98rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 18px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .section + .section {
+      margin-top: 28px;
+    }
+
+    .section-title {
+      margin: 0 0 14px;
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .contact-list,
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .contact-item,
+    .mini-item {
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .contact-item:last-child,
+    .mini-item:last-child {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    .label {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .value {
+      line-height: 1.5;
+      font-size: 0.96rem;
+    }
+
+    .chip-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .chip {
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: #214157;
+      font-size: 0.82rem;
+      line-height: 1.1;
+    }
+
+    .header-block {
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-copy {
+      margin: 18px 0 0;
+      color: var(--muted);
+      line-height: 1.76;
+      font-size: 1rem;
+    }
+
+    .entry {
+      padding: 18px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .entry:first-of-type {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    .entry-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 6px;
+    }
+
+    .entry h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .entry .where {
+      margin: 4px 0 0;
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    .period {
+      color: var(--muted);
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    li + li {
+      margin-top: 6px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .plain {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+    }
+
+    .button-primary {
+      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .button-secondary {
+      color: var(--accent);
+      background: var(--accent-soft);
+      border-color: transparent;
+    }
+
+    @media print {
+      body {
+        padding: 0;
+        background: #fff;
+      }
+
+      .resume {
+        width: 100%;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+      }
+
+      .topbar,
+      .actions {
+        display: none;
+      }
+    }
+
+    @media (max-width: 860px) {
+      .layout,
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .main,
+      .sidebar {
+        padding: 24px 20px;
+      }
+
+      .topbar {
+        padding: 14px 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .entry-head {
+        flex-direction: column;
+      }
+
+      .period {
+        white-space: normal;
+      }
+
+      .name {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="resume">
+    <div class="topbar">
+      <strong>Styled Resume</strong>
+      <div class="actions">
+        <a class="button button-secondary" href="pavel-bohomolnyi-cv.pdf" download>Download Original CV PDF</a>
+        <a class="button button-primary" href="javascript:window.print()">Print / Save PDF</a>
+      </div>
+    </div>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <h1 class="name">Pavel<br />Bohomolnyi</h1>
+        <p class="role">iOS Developer</p>
+        <p class="intro">
+          Software engineer with experience across solo product work, collaborative teams,
+          and independent App Store releases. Strong on modern iOS delivery, clean architecture,
+          and polished interface quality.
+        </p>
+        <div class="pill">Amsterdam, Netherlands</div>
+
+        <section class="section">
+          <h2 class="section-title">Contact</h2>
+          <div class="contact-list">
+            <div class="contact-item">
+              <span class="label">Email</span>
+              <div class="value"><a href="mailto:pavel@bohomolnyi.com">pavel@bohomolnyi.com</a></div>
+            </div>
+            <div class="contact-item">
+              <span class="label">Phone</span>
+              <div class="value">+31 6 86114249</div>
+            </div>
+            <div class="contact-item">
+              <span class="label">LinkedIn</span>
+              <div class="value"><a href="https://www.linkedin.com/in/pavelbohomolnyi/">linkedin.com/in/pavelbohomolnyi</a></div>
+            </div>
+            <div class="contact-item">
+              <span class="label">GitHub</span>
+              <div class="value"><a href="https://github.com/PavelBohomolny">github.com/PavelBohomolny</a></div>
+            </div>
+            <div class="contact-item">
+              <span class="label">App Store</span>
+              <div class="value"><a href="https://apps.apple.com/developer/pavel-bohomolnyi/id1811868448">Developer Profile</a></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Core Skills</h2>
+          <div class="chip-grid">
+            <span class="chip">Swift</span>
+            <span class="chip">SwiftUI</span>
+            <span class="chip">UIKit</span>
+            <span class="chip">MVVM</span>
+            <span class="chip">MVC</span>
+            <span class="chip">TCA</span>
+            <span class="chip">Core Data</span>
+            <span class="chip">SwiftData</span>
+            <span class="chip">Firebase</span>
+            <span class="chip">Supabase</span>
+            <span class="chip">REST APIs</span>
+            <span class="chip">Async/Await</span>
+            <span class="chip">Combine</span>
+            <span class="chip">PromiseKit</span>
+            <span class="chip">CoreBluetooth</span>
+            <span class="chip">Apple Watch</span>
+            <span class="chip">Widgets</span>
+            <span class="chip">Fastlane</span>
+            <span class="chip">CI/CD</span>
+            <span class="chip">Unit Testing</span>
+            <span class="chip">Figma</span>
+            <span class="chip">Zeplin</span>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Highlights</h2>
+          <div class="mini-list">
+            <div class="mini-item">
+              <span class="label">Platforms</span>
+              <div class="value">iPhone, iPad, Apple Watch, macOS</div>
+            </div>
+            <div class="mini-item">
+              <span class="label">Shipping</span>
+              <div class="value">App Store release, distribution, analytics, crash tracking</div>
+            </div>
+            <div class="mini-item">
+              <span class="label">Ways of Working</span>
+              <div class="value">Agile, Scrum, documentation, product collaboration</div>
+            </div>
+          </div>
+        </section>
+      </aside>
+
+      <section class="main">
+        <div class="header-block">
+          <h2 class="section-title">Profile</h2>
+          <p class="section-copy">
+            I have experience working on various projects and for different companies. I have
+            successfully worked as a solo iOS developer for small companies and as part of large,
+            collaborative teams, and I have launched my own apps on the App Store. I am a team
+            player, highly organized, detail-oriented, and self-motivated, with a solid ability
+            to learn quickly and solve complex problems.
+          </p>
+        </div>
+
+        <section class="section">
+          <h2 class="section-title">Experience</h2>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>iOS Developer</h3>
+                <p class="where">Findwhere, Noordwijk, NL</p>
+              </div>
+              <span class="period">Sep 2024 — Current</span>
+            </div>
+            <ul>
+              <li>Main focus on the EMS app, designed to save lives with incident alerts, location-based flows, audio and video chat, and Bluetooth-connected emergency buttons.</li>
+              <li>Completely rewrote the app from scratch using modern technologies and libraries, adding new screens, features, widgets, and a redesigned interface.</li>
+              <li>Integrated third-party services for tracking data, analytics, crash logs, and broader product visibility.</li>
+              <li>Worked on Findwhere Connect, commissioned with Dutch municipalities to give refugees access to essential information and communication tools.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>iOS Developer</h3>
+                <p class="where">Simple Things, Remote</p>
+              </div>
+              <span class="period">Jun 2024 — Sep 2024</span>
+            </div>
+            <ul>
+              <li>Built an MVP entirely in SwiftUI using async/await.</li>
+              <li>Combined reminders, HealthKit activity tracking, weather views, and cryptocurrency widgets into one product.</li>
+              <li>Created a roadmap covering the following four major app updates.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>iOS Developer</h3>
+                <p class="where">Skopei, Den Haag, NL</p>
+              </div>
+              <span class="period">Feb 2023 — Jun 2024</span>
+            </div>
+            <ul>
+              <li>Worked on Topology and Skopei apps, allowing users to access cars, bicycles, boats, properties, and other shareables.</li>
+              <li>Handled everything from small UI fixes to larger projects and App Store distribution.</li>
+              <li>Collaborated closely with Android developers, UI/UX designers, product, business, and testing stakeholders.</li>
+              <li>Produced technical and project documentation using Jira and Confluence.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>iOS Developer</h3>
+                <p class="where">Krepost, Vinnytsia, Ukraine</p>
+              </div>
+              <span class="period">Jul 2021 — Nov 2022</span>
+            </div>
+            <ul>
+              <li>Worked on user profile flows, medicine database features, search improvements, and smaller product enhancements.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>Head of Logistics Department</h3>
+                <p class="where">Irani Corp (Factory54), Tel Aviv, Israel</p>
+              </div>
+              <span class="period">Oct 2019 — Jul 2021</span>
+            </div>
+            <ul>
+              <li>Led cargo logistics, transportation organization, and business communications.</li>
+              <li>Helped adapt the department's business model during the pandemic and improved speed, output, deliveries, and profitability.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>Independent App Work</h3>
+                <p class="where">Personal App Store Releases</p>
+              </div>
+              <span class="period">Ongoing</span>
+            </div>
+            <ul>
+              <li>No Smoke Today: a quit-smoking app used as a playground for Swift 6, async/await, Swift Testing, widgets, Apple Watch, RevenueCat, Firebase Analytics, and Crashlytics.</li>
+              <li>Nom Nom: a meal planner with grocery list generation, recipe sharing, and an Apple Watch companion app.</li>
+              <li>Actively building cross-device apps for iPhone, iPad, macOS, and Apple Watch, with growing involvement in marketing and product positioning.</li>
+            </ul>
+          </article>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Selected Apps</h2>
+          <div class="two-col">
+            <div>
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>No Smoke Today</h3>
+                    <p class="where">Habit tracking / health product</p>
+                  </div>
+                </div>
+                <p class="plain">Quit-smoking app with modern iOS experimentation around widgets, Apple Watch, analytics, and monetization.</p>
+              </article>
+
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>Nom Nom</h3>
+                    <p class="where">Meal planner and grocery companion</p>
+                  </div>
+                </div>
+                <p class="plain">Weekly meal planning, grocery list generation, Apple Watch companion support, and community recipe sharing.</p>
+              </article>
+            </div>
+
+            <div>
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>EMS</h3>
+                    <p class="where">Operational safety product</p>
+                  </div>
+                </div>
+                <p class="plain">Incident information, communication, location-based flows, and emergency response support.</p>
+              </article>
+
+              <article class="entry">
+                <div class="entry-head">
+                  <div>
+                    <h3>Findwhere Connect</h3>
+                    <p class="where">Municipality and refugee support app</p>
+                  </div>
+                </div>
+                <p class="plain">Accessible communication flows and essential information for users working with Dutch municipalities.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Education</h2>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>MD</h3>
+                <p class="where">National Pirogov Memorial Medical University, Faculty of Dentistry</p>
+              </div>
+              <span class="period">Sep 2010 — Jul 2017</span>
+            </div>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>Full Stack Java Developer</h3>
+                <p class="where">Tel Ran, Rehovot, Israel</p>
+              </div>
+              <span class="period">Dec 2020 — Aug 2022</span>
+            </div>
+            <p class="plain">Fundamental training in modern websites and web apps using HTML, CSS, JavaScript, and React.</p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>iOS Development Bootcamp</h3>
+                <p class="where">Online, London, UK</p>
+              </div>
+              <span class="period">Aug 2020 — Nov 2020</span>
+            </div>
+          </article>
+        </section>
+
+        <section class="section">
+          <h2 class="section-title">Courses, Internship, and Activities</h2>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>Additional iOS and Product Courses</h3>
+                <p class="where">Online learning and structured programs</p>
+              </div>
+            </div>
+            <ul>
+              <li>Full Stack iOS Development Course, CodeWithChris.</li>
+              <li>Developing Apps for iOS, Stanford University.</li>
+              <li>iOS App Development Course, Udemy.</li>
+              <li>Web Design and UI/UX, Study Kvo.</li>
+              <li>Introductory iOS development, Web Academy, Kyiv.</li>
+            </ul>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>SwiftUI Internship</h3>
+                <p class="where">Credo Academy, Remote</p>
+              </div>
+              <span class="period">May 2022 — Nov 2022</span>
+            </div>
+            <p class="plain">Worked with async/await, APIs, JSON, MVVM, animations, swipes, gestures, and UX/UI.</p>
+          </article>
+
+          <article class="entry">
+            <div class="entry-head">
+              <div>
+                <h3>Volunteering and Ongoing Learning</h3>
+                <p class="where">Cordaan, Amstelveen, NL and broader iOS community</p>
+              </div>
+              <span class="period">Jul 2022 — Dec 2022</span>
+            </div>
+            <ul>
+              <li>Volunteered with older people, helping with leisure activities, food, communication, and event support.</li>
+              <li>Continue attending Swift courses on Coursera, iOS conferences, and meetups.</li>
+              <li>Personal interests include cycling, running, reading, and traveling.</li>
+            </ul>
+          </article>
+        </section>
+      </section>
+    </div>
+  </main>
+</body>
+</html>
